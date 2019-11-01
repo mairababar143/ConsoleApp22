@@ -123,7 +123,31 @@ namespace ConsoleApp22
             else
                 Console.WriteLine("Student not found");
         }
-
+        public void MarkAttendance()
+        {
+            int index = 2;
+            string[] array = File.ReadAllLines(@"D:\Desktop\Student.txt");
+            for (int i = 0; i < listObject.Count(); i++)
+            {
+                char attendance = ' ';
+                Console.Write(listObject[i].studentID+"\t"+listObject[i].name+"\t\tAttendance: ");
+                attendance = Convert.ToChar(Console.ReadLine());
+                if (attendance == 'p' || attendance == 'P')
+                {
+                    listObject[i].attendance = "Present";
+                    array[index] = "P";
+                }
+                else if (attendance == 'a' || attendance == 'A')
+                {
+                    listObject[i].attendance = "Absent";
+                    array[index] = "A";
+                }
+                else
+                    Console.WriteLine("Incorrect Input");
+                index += 7;
+            }
+            File.WriteAllLines(@"D:\Desktop\Student.txt", array);
+        }
     }
 }
  
