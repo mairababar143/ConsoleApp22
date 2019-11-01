@@ -22,6 +22,7 @@ namespace ConsoleApp22
             {
                 case 1:
                     {
+                        //Console.WriteLine("Check");
                         Console.Clear();
                         Console.WriteLine("Create New Student\n");
                         Console.Write("Enter the following information for a new student:\n\nStudent ID: ");
