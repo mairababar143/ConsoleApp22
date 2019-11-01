@@ -11,14 +11,14 @@ namespace ConsoleApp22
         static void Main(string[] args)
         {
             Student student = new Student();
-            int option = 0, semester = 0;
+            int option1 = 0, semester = 0;
             string studentID = " ", name = " ", department = " ", university = " ", attendance = " " ;
             float cgpa = 0;
             Console.Write("Main Menu\n\n1. Create New Student\n2. Search Student\n3. Delete Student Record\n4. List top 03 of class\n5. Mark student attendance\n6. View attendance\n\nOption: ");
-            option = Convert.ToInt32(Console.ReadLine());
+            option1 = Convert.ToInt32(Console.ReadLine());
             student.GetInfo();
 
-            switch(option)
+            switch(option1)
             {
                 case 1:
                     {
@@ -44,25 +44,67 @@ namespace ConsoleApp22
                     }
                 case 2:
                     {
+                        int option = 0;
+                        Console.Write("\tSearch Student\n\nSelect from the following:\n\t1. Search by ID\n\t2. Search by Name\n3. Display All Students\n\tOption: ");
+                        option = Convert.ToInt32(Console.ReadLine());
+                        Console.Clear();
+                        switch (option)
+                        {
+                            case 1:
+                                {
+                                    string id = " ";
+                                    Console.Write("\tSearch By ID\n\nEnter Student ID to Search\n\tID: ");
+                                    id = Console.ReadLine();
+                                    student.SearchStudentID(id);
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    string sName = " ";
+                                    Console.Write("\tSearch By ID\n\nEnter Student Name to Search\n\tName: ");
+                                    sName = Console.ReadLine();
+                                    student.SearchStudentName(sName);
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    student.Display();
+                                    break;
+                                }
+                        }
                         break;
                     }
                 case 3:
                     {
+                        string id = " ";
+                        Console.WriteLine("\tDelete Student\n");
+                        Console.Write("Enter iD Of student to delete\n\tID: ");
+                        id = Console.ReadLine();
+                        student.DeleteStudent(id);
+                        break;
                         break;
                     }
                 case 4:
                     {
+                        Console.WriteLine("\tList top 3 Students\n");
+                        student.TopThree();
+                        break;
                         break;
                     }
                 case 5:
                     {
+                        Console.WriteLine("\tMark Student Attendance\n");
+                        student.MarkAttendance();
+                        break;
                         break;
                     }
                 case 6:
                     {
+                        Console.WriteLine("\tView Attendance\n");
+                        student.ViewAttendance();
+                        break;
                         break;
                     }
-
             }
             Console.ReadKey();
         }

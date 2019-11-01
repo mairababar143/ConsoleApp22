@@ -130,7 +130,7 @@ namespace ConsoleApp22
             for (int i = 0; i < listObject.Count(); i++)
             {
                 char attendance = ' ';
-                Console.Write(listObject[i].studentID+"\t"+listObject[i].name+"\t\tAttendance: ");
+                Console.Write(listObject[i].studentID + "\t" + listObject[i].name + "\t\tAttendance: ");
                 attendance = Convert.ToChar(Console.ReadLine());
                 if (attendance == 'p' || attendance == 'P')
                 {
@@ -148,6 +148,30 @@ namespace ConsoleApp22
             }
             File.WriteAllLines(@"D:\Desktop\Student.txt", array);
         }
+        public void ViewAttendance()
+        {
+            for (int i = 0; i < listObject.Count; i++)
+            {
+                Console.WriteLine("{0}\t{1}\t\tAttendance ", listObject[i].studentID, listObject[i].name, listObject[i].attendance);
+            }
+        }
+        public void Display()
+        {
+            Console.WriteLine("Id\tName\tAttendance\tCgpa\tSemester\tDepartment\tUniversity");
+            for (int i = 0; i < listObject.Count; i++)
+            {
+                Console.WriteLine(listObject[i].studentID + "\t" + listObject[i].name + "\t\t" + listObject[i].attendance + "\t" + listObject[i].cgpa + "\t\t" + listObject[i].semester + "\t" + listObject[i].department + "\t\t" + listObject[i].university);
+            }
+        }
+        public void TopThree()
+        {
+            listObject.Sort((x, y) => y.cgpa.CompareTo(x.cgpa));
+            Console.WriteLine("Id\tName\tAttendance\tCgpa\tSemester\tDepartment\tUniversity");
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine(listObject[i].studentID + "\t" + listObject[i].name + "\t\t" + listObject[i].attendance + "\t" + listObject[i].cgpa + "\t\t" + listObject[i].semester + "\t" + listObject[i].department + "\t\t" + listObject[i].university);
+            }
+        }
     }
 }
- 
+
